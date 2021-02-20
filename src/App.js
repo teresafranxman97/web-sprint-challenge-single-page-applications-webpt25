@@ -1,11 +1,43 @@
 import React from "react";
+import { Route, Link, Switch } from 'react-router-dom';
+import styled from 'styled-components';
 
-const App = () => {
+import Home from './Components/Home';
+import Pizza from './Components/Pizza'
+
+import logo from './Images/logo.png'
+
+const Styled = styled.div `
+  img {
+    
+    width: 10rem;
+    height: 8rem;
+  }
+`
+
+function App() {
+
   return (
-    <>
-      <h1>Lambda Eats</h1>
-      <p>You can remove this code and create your own header</p>
-    </>
+    <Styled>  
+      <div className="App">
+        <nav>
+         <img src={logo} alt='logo' /> 
+          <div className="nav-links">
+            <Link to='/'>Home</Link>
+            <Link to='/pizza'>Pizza</Link>
+          </div>  
+        </nav>
+        <Switch>
+          <Route path='/pizza'>
+            <Pizza />
+          </Route>
+          <Route exact path='/'>
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Styled> 
   );
 };
+
 export default App;
