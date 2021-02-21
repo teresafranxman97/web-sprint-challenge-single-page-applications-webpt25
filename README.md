@@ -32,9 +32,12 @@ Demonstrate your understanding of this week's concepts by answering the followin
 
 1. In 1-2 sentences, explain what React's `useRouteMatch` hook is used for.
 
-    A: Similiar to a traditional <Route> tag, useRouteMatch allows us to 
+    A: The 'useRouteMatch' hook is used to add nested routes to our application. This helps us keep our code D.R.Y by allowing us to change a single parameter in the url without having to change the whole thing. This would be very useful in a shopping app that would need to link to different items when clicked.
 
 1. How would you explain form validation to someone who has never programmed before?
+
+    A: Form Validation is a way for the developer to 
+
 1. In 1-2 sentences, define end to end testing.
 
 ## Instructions
@@ -52,17 +55,16 @@ Demonstrate your understanding of this week's concepts by answering the followin
 
 Your finished project must include all of the following requirements:
 
-- [ ] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable)
+- [x ] A homepage that has a "/" route and links to your form (button, nav bar, or any other type of link is acceptable)
 - [x ] A form with a "/pizza" route
-- [ ] A name text input field
+- [x ] A name text input field
 - [ ] Validation for name - name must be at least 2 characters
 - [x ] A dropdown for pizza size
 - [x ] A checklist for toppings - at least 4 (hint: name each separately!)
-- [ ] Text input for special instructions
-- [ ] An Add to Order button that submits form and returns a database record of name, size, toppings and special instructions
+- [x ] Text input for special instructions
+- [x ] An Add to Order button that submits form and returns a database record of name, size, toppings and special instructions
 
 #### Testing MVP
-7
 Implement the following tests in Cypress:
 
 - [ ] test that you can add text to the box

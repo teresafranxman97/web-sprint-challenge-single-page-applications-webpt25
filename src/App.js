@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Route, Link, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -8,10 +9,38 @@ import Pizza from './Components/Pizza'
 import logo from './Images/logo.png'
 
 const Styled = styled.div `
+  nav {
+    display: flex;
+    flex-flow: row-nowrap;
+    justify-content: space-between;
+    border-bottom: 2px solid lightgrey;
+  }
+
+   .nav-links {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 1em;
+    margin-top: 2%;
+  }
+
+  .link {
+    color: black;
+    text-decoration: none;
+  }
+
+  .secondLink {
+    color: black;
+    border: 1px solid red;
+    border-radius: 10px 20px 10px;
+    background-color: red;
+    padding: 5px;
+    margin-left: .5em;
+    text-decoration: none;
+  }
+
   img {
-    
     width: 10rem;
-    height: 8rem;
+    height: 7.5rem;
   }
 `
 
@@ -23,8 +52,8 @@ function App() {
         <nav>
          <img src={logo} alt='logo' /> 
           <div className="nav-links">
-            <Link to='/'>Home</Link>
-            <Link to='/pizza'>Pizza</Link>
+            <Link className='link' to='/'>Home</Link>
+            <Link className='secondLink' to='/pizza'>Pizza</Link>
           </div>  
         </nav>
         <Switch>
