@@ -1,10 +1,10 @@
 import React from "react";
-
 import { Route, Link, Switch } from 'react-router-dom';
 import styled from 'styled-components';
 
 import Home from './Components/Home';
-import Pizza from './Components/Pizza'
+import PizzaForm from './Components/Pizza'
+import Schema from './Validation/formSchema';
 
 import logo from './Images/logo.png'
 
@@ -58,7 +58,7 @@ function App() {
         </nav>
         <Switch>
           <Route path='/pizza'>
-            <Pizza />
+            <PizzaForm />
           </Route>
           <Route exact path='/'>
             <Home />

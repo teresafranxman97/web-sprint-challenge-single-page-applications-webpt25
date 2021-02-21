@@ -1,16 +1,26 @@
 import React from 'react';
-import * as yup from 'yup';
 
-function Pizza() {
-    return (
-      <form className="form-container">
-        <h1>Build Your Own Pizza</h1>
+function PizzaForm() {
+
+  const handleChange = event => {
+    const { checked, value, name, type } = event.target
+    const returnValue = type === "checkbox" ? checked : value
+  }
+
+  const handleSubmit = event => {
+      event.preventDefault()
+      console.log("Form has been submitted!")
+  }
+
+  return (
+    <form className="form-container" onSubmit={handleSubmit}>
+      <h1>Build Your Own Pizza</h1>
 
         <div className="form-select">   
           <h2>Choice of Size</h2>
           <p>Required</p>  
             <label>
-                <select name="size">
+                <select name="size" onChange={handleChange}>
                     <option>Select</option>
                     <option>Small</option> 
                     <option>Medium</option> 
@@ -26,27 +36,31 @@ function Pizza() {
                 <input
                   type="radio"
                   name="sauce"
+                  onChange={handleChange}
                 />
             </label>  
 
             <label>Garlic Ranch
                 <input
                   type="radio"
-                  name="sauce"  
+                  name="sauce"
+                  onChange={handleChange}  
                 />
             </label>
 
             <label>BBQ Sauce
                 <input
                   type="radio"
-                  name="sauce"  
+                  name="sauce"
+                  onChange={handleChange}  
                 />
             </label>
 
             <label>Spinach Alfredo 
                 <input
                   type="radio"
-                  name="sauce"  
+                  name="sauce"
+                  onChange={handleChange}  
                 />
             </label>
         </div>  
@@ -58,13 +72,7 @@ function Pizza() {
                 <input
                   type="checkbox"
                   name="pepperoni"
-                />
-            </label>
-
-            <label>Sausage
-                <input
-                  type="checkbox"
-                  name="sausage"  
+                  onChange={handleChange}
                 />
             </label>
 
@@ -72,6 +80,7 @@ function Pizza() {
                 <input
                   type="checkbox"
                   name="bacon"
+                  onChange={handleChange}
                 />
             </label>
 
@@ -79,6 +88,7 @@ function Pizza() {
                 <input
                   type="checkbox"
                   name="spicySausage"
+                  onChange={handleChange}
                 />
             </label>
 
@@ -86,6 +96,7 @@ function Pizza() {
                 <input
                   type="checkbox"
                   name="bananaPeppers"
+                  onChange={handleChange}
                 />
             </label>
 
@@ -93,6 +104,7 @@ function Pizza() {
                 <input
                   type="checkbox"
                   name="onions"
+                  onChange={handleChange}
                 />
             </label>
 
@@ -100,6 +112,7 @@ function Pizza() {
                 <input
                   type="checkbox"
                   name="greenPeppers"
+                  onChange={handleChange}
                 />
             </label>
 
@@ -107,6 +120,7 @@ function Pizza() {
                 <input
                   type="checkbox"
                   name="dicedTomatoes"
+                  onChange={handleChange}
                 />
             </label>
 
@@ -114,6 +128,7 @@ function Pizza() {
                 <input
                   type="checkbox"
                   name="olives"
+                  onChange={handleChange}
                 />
             </label>
 
@@ -121,6 +136,7 @@ function Pizza() {
                 <input
                   type="checkbox"
                   name="roastedChicken"
+                  onChange={handleChange}
                 />
             </label>
 
@@ -128,6 +144,7 @@ function Pizza() {
                 <input
                   type="checkbox"
                   name="pineapple"
+                  onChange={handleChange}
                 />
             </label>
 
@@ -135,6 +152,7 @@ function Pizza() {
                 <input
                   type="checkbox"
                   name="cheese"
+                  onChange={handleChange}
                 />
             </label>
         </div>
@@ -146,16 +164,18 @@ function Pizza() {
                   type="text"
                   name="instructions"
                   placeholder="Anything else you'd like to add?"
+                  onChange={handleChange}
                 />
             </label>
         </div>
 
-        <div className="button">
-          <label>
+        <div className="form-submit">
+          <label>Add name
             <input
               type="text"
               name="name"
-              placeholder="Enter your name"  
+              placeholder="Enter your name"
+              onChange={handleChange}  
             />
           </label>  
           <button>Add to Order</button>
@@ -164,4 +184,4 @@ function Pizza() {
     )
 }
 
-export default Pizza;
+export default PizzaForm;
