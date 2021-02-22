@@ -1,10 +1,15 @@
 import React from 'react';
 
-function PizzaForm() {
+function PizzaForm(props) {
+  const { 
+    values,
+    change, 
+  } = props
 
   const handleChange = event => {
     const { checked, value, name, type } = event.target
     const returnValue = type === "checkbox" ? checked : value
+    change(name, returnValue)
   }
 
   const handleSubmit = event => {
@@ -20,11 +25,11 @@ function PizzaForm() {
           <h2>Choice of Size</h2>
           <p>Required</p>  
             <label>
-                <select name="size" onChange={handleChange}>
-                    <option>Select</option>
-                    <option>Small</option> 
-                    <option>Medium</option> 
-                    <option>Large</option>    
+                <select name="size" onChange={handleChange} value={values.size}>
+                    <option value="">Select</option>
+                    <option value="small">Small</option> 
+                    <option value="medium">Medium</option> 
+                    <option value="large">Large</option>    
                 </select> 
             </label>
         </div> 
@@ -36,6 +41,8 @@ function PizzaForm() {
                 <input
                   type="radio"
                   name="sauce"
+                  value="OriginalRed"
+                  checked={values.sauce === "OriginalRed"}
                   onChange={handleChange}
                 />
             </label>  
@@ -44,6 +51,8 @@ function PizzaForm() {
                 <input
                   type="radio"
                   name="sauce"
+                  value="GarlicRanch"
+                  checked={values.sauce === "GarlicRanch"}
                   onChange={handleChange}  
                 />
             </label>
@@ -52,6 +61,8 @@ function PizzaForm() {
                 <input
                   type="radio"
                   name="sauce"
+                  value="BBQ"
+                  checked={values.sauce === "BBQ"}
                   onChange={handleChange}  
                 />
             </label>
@@ -60,6 +71,8 @@ function PizzaForm() {
                 <input
                   type="radio"
                   name="sauce"
+                  value="SpinachAlfredo"
+                  checked={values.sauce === "SpinachAlfredo"}
                   onChange={handleChange}  
                 />
             </label>
@@ -72,6 +85,7 @@ function PizzaForm() {
                 <input
                   type="checkbox"
                   name="pepperoni"
+                  checked={values.pepperoni}
                   onChange={handleChange}
                 />
             </label>
@@ -80,6 +94,7 @@ function PizzaForm() {
                 <input
                   type="checkbox"
                   name="bacon"
+                  checked={values.bacon}
                   onChange={handleChange}
                 />
             </label>
@@ -88,6 +103,7 @@ function PizzaForm() {
                 <input
                   type="checkbox"
                   name="spicySausage"
+                  checked={values.spicySausage}
                   onChange={handleChange}
                 />
             </label>
@@ -96,6 +112,7 @@ function PizzaForm() {
                 <input
                   type="checkbox"
                   name="bananaPeppers"
+                  checked={values.bananaPeppers}
                   onChange={handleChange}
                 />
             </label>
@@ -104,6 +121,7 @@ function PizzaForm() {
                 <input
                   type="checkbox"
                   name="onions"
+                  checked={values.onions}
                   onChange={handleChange}
                 />
             </label>
@@ -112,6 +130,7 @@ function PizzaForm() {
                 <input
                   type="checkbox"
                   name="greenPeppers"
+                  checked={values.greenPeppers}
                   onChange={handleChange}
                 />
             </label>
@@ -120,6 +139,7 @@ function PizzaForm() {
                 <input
                   type="checkbox"
                   name="dicedTomatoes"
+                  checked={values.dicedTomatoes}
                   onChange={handleChange}
                 />
             </label>
@@ -128,6 +148,7 @@ function PizzaForm() {
                 <input
                   type="checkbox"
                   name="olives"
+                  checked={values.olives}
                   onChange={handleChange}
                 />
             </label>
@@ -136,6 +157,7 @@ function PizzaForm() {
                 <input
                   type="checkbox"
                   name="roastedChicken"
+                  checked={values.roastedChicken}
                   onChange={handleChange}
                 />
             </label>
@@ -144,6 +166,7 @@ function PizzaForm() {
                 <input
                   type="checkbox"
                   name="pineapple"
+                  checked={values.pineapple}
                   onChange={handleChange}
                 />
             </label>
@@ -152,6 +175,7 @@ function PizzaForm() {
                 <input
                   type="checkbox"
                   name="cheese"
+                  checked={values.cheese}
                   onChange={handleChange}
                 />
             </label>
@@ -163,6 +187,7 @@ function PizzaForm() {
                 <input 
                   type="text"
                   name="instructions"
+                  value={values.instructions}
                   placeholder="Anything else you'd like to add?"
                   onChange={handleChange}
                 />
@@ -175,13 +200,14 @@ function PizzaForm() {
               type="text"
               name="name"
               placeholder="Enter your name"
+              value={values.name}
               onChange={handleChange}  
             />
           </label>  
-          <button>Add to Order</button>
+          <button id="submitBtn">Add to Order</button>
         </div>
       </form>
-    )
+  )
 }
 
 export default PizzaForm;

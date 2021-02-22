@@ -15,7 +15,7 @@ const Styled = styled.div `
     border-bottom: 2px solid lightgrey;
   }
 
-   .nav-links {
+  .nav-links {
     font-size: 20px;
     font-weight: bold;
     margin-right: 1em;
@@ -49,18 +49,17 @@ const initialFormValues = {
   // RADIO BUTTONS //
   sauce: '',
   // CHECKBOXES //
-  pepperoni: '',
-  bacon: '',
-  spicySausage: '',
-  bananaPeppers: '',
-  onions: '',
-  greenPeppers: '',
-  dicedTomatoes: '',
-  olives: '',
-  roastedChicken: '',
-  pineapple: '',
-  cheese: '',
-
+  pepperoni: false,
+  bacon: false,
+  spicySausage: false,
+  bananaPeppers: false,
+  onions: false,
+  greenPeppers: false,
+  dicedTomatoes: false,
+  olives: false,
+  roastedChicken: false,
+  pineapple: false,
+  cheese: false,
   // TEXT BOXES //
   instructions: '',
   name: '',
@@ -106,7 +105,7 @@ function App() {
         </nav>
         <Switch>
           <Route path='/pizza'>
-            <PizzaForm />
+            <PizzaForm values={form} change={inputChange} />
           </Route>
           <Route exact path='/'>
             <Home />
