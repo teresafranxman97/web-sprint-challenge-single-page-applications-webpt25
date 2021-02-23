@@ -1,26 +1,23 @@
 import React from 'react';
 
 function PizzaForm(props) {
-  const { 
-    values,
-    change, 
-  } = props
+  const { values, change, submit, disabled } = props;
 
   const handleChange = event => {
     const { checked, value, name, type } = event.target
     const returnValue = type === "checkbox" ? checked : value
     change(name, returnValue)
-  }
+  };
 
   const handleSubmit = event => {
-      event.preventDefault()
-      console.log("Form has been submitted!")
-  }
+    event.preventDefault()
+    console.log("Form has been submitted!")
+    submit()
+  };
 
   return (
     <form className="form-container" onSubmit={handleSubmit}>
       <h1>Build Your Own Pizza</h1>
-
         <div className="form-select">   
           <h2>Choice of Size</h2>
           <p>Required</p>  
@@ -204,7 +201,7 @@ function PizzaForm(props) {
               onChange={handleChange}  
             />
           </label>  
-          <button id="submitBtn">Add to Order</button>
+          <button id="submitBtn" disabled={disabled}>Add to Order</button>
         </div>
       </form>
   )

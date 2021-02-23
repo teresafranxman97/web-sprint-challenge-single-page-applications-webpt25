@@ -1,6 +1,6 @@
 // Tests will be written here
 describe("Lambda Eats Application", () => {
-    const textInput = () => window.cy.get('input[name=text]');
+    const textInput = () => window.cy.get('input[name=name]');
     const submitBtn = () => window.cy.get('button[id=submitBtn]');
 
     it('Basic test', () => {

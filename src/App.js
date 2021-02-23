@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Route, Link, Switch } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
+
 import Home from './Components/Home';
 import PizzaForm from './Components/Pizza'
 import Schema from './Validation/formSchema';
@@ -68,13 +70,26 @@ const initialFormErrors = {
   name: '',
 }
 const initialDisabled = true
+const initialPostData = []
 
 function App() {
   // STATES //
   const [ form, setForm ] = useState(initialFormValues);
-  const [ disabled, setDisabled ] = useState(initialDisabled) //BOOLEAN for button
   const [ errors, setErrors ] = useState(initialFormErrors)
+  const [ disabled, setDisabled ] = useState(initialDisabled) //BOOLEAN for button
+  const [ postData, setPostData ] = useState(initialPostData)
 
+  ////// POST REQUEST HERE ///////
+  const getPostData = newData => {
+    axios.post("https://reqres.in", newData)
+      .then(res => {
+        console.log(res.data)
+        setPostData([...postData, res.data])
+        setForm(initialFormValues)
+      })
+  }
+
+ /////// EVENT HANDLERS  
   const inputChange = (name, value) => {
     Yup.reach(Schema, name)
       .validate(value)
@@ -82,11 +97,34 @@ function App() {
         .catch(err => setErrors({...errors, [name]: err.errors[0]}))
 
     setForm({
-      ...form,
-      [name]: value
-    })    
-  }
+      ...form,[name]: value
+    })   
+  };
 
+  const formSubmit = () => {
+    const newData = {
+      size: form.size.trim(),
+      sauce: form.sauce.trim(),
+      instructions: form.instructions.trim(),
+      name: form.name.trim(),
+      toppings: [
+        "pepperoni",
+        "bacon",
+        "spicySausage",
+        "bananaPeppers",
+        "onions",
+        "greenPeppers",
+        "dicedTomatoes",
+        "olives",
+        "roastedChicken",
+        "pineapple",
+        "cheese"
+      ].filter(topping => !!form[topping])
+    }
+    getPostData(newData)
+  }
+  
+ //  SIDE EFFECTS //
   useEffect(() => {
     Schema.isValid(form)
       .then(isValid => setDisabled(!isValid))
@@ -105,7 +143,12 @@ function App() {
         </nav>
         <Switch>
           <Route path='/pizza'>
-            <PizzaForm values={form} change={inputChange} />
+            <PizzaForm 
+            values={form} 
+            change={inputChange} 
+            submit={formSubmit} 
+            disabled={disabled} 
+            />
           </Route>
           <Route exact path='/'>
             <Home />

@@ -5,6 +5,10 @@ const Schema = Yup.object().shape({
     .string()
     .required("Name is required.")
     .min(2, "Name must be at least 2 characters."),
+  instructions: Yup 
+    .string()
+    .required()
+    .min(3, "Must be at least 3 characters."),  
   sauce: Yup
     .string()
     .oneOf(["OriginalRed", "GarlicRanch", "BBQ", "SpinachAlfredo"], "Sauce is required"),
